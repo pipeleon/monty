@@ -35,5 +35,12 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void (*get_opcode(char *opc))(stack_t **, unsigned int);
+
+void push(stack_t **stack, unsigned int line_number);
+
+void pall(stack_t **stack, unsigned int line_number);
+
+int _atoi(char *s);
 
 #endif

@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void pull(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
@@ -11,27 +11,31 @@ void pull(stack_t **stack, unsigned int line_number)
 		exit (EXIT_FAILURE);
 	}
 	new->n = line_number;
-	if (*head == NULL)
+	if (*stack == NULL)
 	{
 		new->next = NULL;
 		new->prev = NULL;
 	}
 	else
 	{
-		new->next = *head;
+		new->next = *stack;
 		new->prev = NULL;
-		(*head)->prev = new;
+		(*stack)->prev = new;
 	}
-	*head = new;
+	*stack = new;
 }
 
 void pall(stack_t **stack, unsigned int line_number)
 {
+	stack_t *tmp;
+
 	(void)(line_number);
-	if ((*stack) != NULL)
+	
+	tmp = *stack;
+
+	while (tmp)
 	{
-		printf("%d\n", (*stack)->n);
-		if ((*stack)->next != NULL)
-			pall((*stack)->next);
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
 	}
 }

@@ -12,8 +12,9 @@ int main(int argc, char **argv)
 {
 	char line[1024];
 	char *read, *comando, *dato;
-	int (*f)(stack_t **, unsigned int), status, line_number = 1;
-	unsigned int data_int;
+	void (*f)(stack_t **, unsigned int);
+	int line_number = 1;
+	unsigned int dato_int;
 	stack_t *new = NULL;
 	FILE *fp = fopen(argv[1], "r");
 
@@ -33,14 +34,13 @@ int main(int argc, char **argv)
 			dato_int = 0;
 		else
 			dato_int  = _atoi(dato);
-		printf("Comando = %s - Dato = %s\n", comando, dato);
 		f = get_opcode(comando);
 		if (!f)
 		{
 			fprintf(stderr, "L/%d: unknown instruction %s", line_number, comando);
 			return (EXIT_FAILURE);
 		}
-		status = f(&new, dato_int);
+		f(&new, dato_int);
 
 		read = fgets(line, 1024, fp);
 		line_number++;

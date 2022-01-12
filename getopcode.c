@@ -5,11 +5,11 @@
  * @opc: Command to check.
  * Return: a function-potiner to execute de opcode, NULL on failure.
  */
-int (*get_opcode(char *opc))(stack_t **, unsigned int)
+void (*get_opcode(char *opc))(stack_t **, unsigned int)
 {
 	instruction_t command[] = {
-		{"push", _push},
-		{"pall", _pall},
+		{"push", push},
+		{"pall", pall},
 		{NULL, NULL}};
 	int cont = 0;
 
