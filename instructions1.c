@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+ * push - Prints all the elements of a stack
+ * @stack: Stack
+ * @line_number: Line number
+ *
+ * Return: void
+ */
+
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
@@ -8,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	new->n = line_number;
 	if (*stack == NULL)
@@ -25,12 +33,19 @@ void push(stack_t **stack, unsigned int line_number)
 	*stack = new;
 }
 
+/**
+ * pall - Prints all the elements of a stack
+ * @stack: Stack
+ * @line_number: Line number
+ *
+ * Return: void
+ */
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
 	(void)(line_number);
-	
+
 	tmp = *stack;
 
 	while (tmp)

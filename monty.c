@@ -23,9 +23,7 @@ int main(int argc, char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
-
 	read = fgets(line, 1024, fp);
-
 	while (read)
 	{
 		comando = strtok(line, " \t\r\n\a");
@@ -34,13 +32,16 @@ int main(int argc, char **argv)
 			dato_int = 0;
 		else
 			dato_int  = _atoi(dato);
-		f = get_opcode(comando);
-		if (!f)
+		if (comando != NULL)
 		{
-			fprintf(stderr, "L/%d: unknown instruction %s", line_number, comando);
-			return (EXIT_FAILURE);
+			f = get_opcode(comando);
+			if (!f)
+			{
+				fprintf(stderr, "L/%d: unknown instruction %s", line_number, comando);
+				return (EXIT_FAILURE);
+			}
+			f(&new, dato_int);
 		}
-		f(&new, dato_int);
 
 		read = fgets(line, 1024, fp);
 		line_number++;
