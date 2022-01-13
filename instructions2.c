@@ -49,7 +49,7 @@ void error2(void)
  */
 void error3(int line, char *cmd)
 {
-	fprintf(stderr, "L/%d: unknown instruction %s\n", line, cmd);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line, cmd);
 	exit(EXIT_FAILURE);
 }
 

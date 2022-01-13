@@ -10,6 +10,7 @@ void (*get_opcode(char *opc))(stack_t **, unsigned int)
 	instruction_t command[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}};
 	int cont = 0;
 

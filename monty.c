@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 					dato_int = _atoi(dato);
 			}
 			else
-				dato_int = 0;
+				dato_int = line_number;
 			f(&new, dato_int);
 		}
 		read = fgets(line, 1024, fp), line_number++;

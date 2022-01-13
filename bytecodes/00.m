@@ -1,6 +1,6 @@
+pint
 push 1
-
-push 243
-
-push a fedf
-pall
+pint
+push 2
+push 3
+pint
