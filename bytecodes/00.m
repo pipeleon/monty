@@ -1,3 +1,4 @@
+swap
 push 1
 swap
 push 2
