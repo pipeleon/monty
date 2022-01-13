@@ -41,6 +41,8 @@ void push(stack_t **stack, unsigned int line_number);
 
 void pall(stack_t **stack, unsigned int line_number);
 
+void free_stack(stack_t *head);
+
 int _atoi(char *s);
 
 int isnumber(char *s);

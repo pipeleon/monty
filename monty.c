@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 			if (!f)
 			{
 				fprintf(stderr, "L/%d: unknown instruction %s\n", line_number, comando);
+				free_stack(new);
 				return (EXIT_FAILURE);
 			}
 			if (f == push)
@@ -45,6 +46,7 @@ int main(int argc, char **argv)
 				if (dato == NULL || isnumber(dato) == 0)
 				{
 					fprintf(stderr, "L%d: usage: push integer\n", line_number);
+					free_stack(new);
 					exit(EXIT_FAILURE);
 				}
 				else
@@ -57,5 +59,6 @@ int main(int argc, char **argv)
 		read = fgets(line, 1024, fp), line_number++;
 	}
 	fclose(fp);
+	free_stack(new);
 	return (EXIT_SUCCESS);
 }
