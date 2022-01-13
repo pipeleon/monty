@@ -51,6 +51,8 @@ void add(stack_t **stack, unsigned int line_number);
 
 void nop(stack_t **stack, unsigned int line_number);
 
+void sub(stack_t **stack, unsigned int line_number);
+
 void free_stack(stack_t *head);
 
 void error1(char *file);
@@ -64,6 +66,8 @@ void error4(int line);
 void error5(int line);
 
 void error6(int line);
+
+void error7(int line);
 
 int _atoi(char *s);
 

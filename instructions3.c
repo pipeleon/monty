@@ -56,3 +56,23 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void)(stack);
 	(void)(line_number);
 }
+
+/**
+ * sub - Sub the top element of the stack with the 2
+ * @stack: Stack
+ * @line_number: Line number
+ *
+ * Return: void
+ */
+void sub(stack_t **stack, unsigned int line_number)
+{
+	int resta;
+	stack_t *tmp;
+
+	(void)(line_number);
+	tmp = *stack;
+	resta = ((*stack)->next)->n - (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->n = resta;
+	free(tmp);
+}
