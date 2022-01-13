@@ -11,10 +11,9 @@
 int main(int argc, char **argv)
 {
 	char line[1024];
-	char *read, *comando, *dato; /**case_push = "push"*/
+	char *read, *comando, *dato;
 	void (*f)(stack_t **, unsigned int);
-	int line_number = 1;
-	unsigned int dato_int;
+	unsigned int dato_int, line_number = 1;
 	stack_t *new = NULL;
 	FILE *fp;
 
@@ -41,6 +40,8 @@ int main(int argc, char **argv)
 			}
 			else if (f == swap && (new == NULL || new->next == NULL))
 				free_stack(new), fclose(fp), error5(line_number);
+			else if (f == add && (new == NULL || new->next == NULL))
+				free_stack(new), fclose(fp), error6(line_number);
 			else
 				dato_int = line_number;
 			f(&new, dato_int);
