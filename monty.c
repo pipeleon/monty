@@ -39,6 +39,8 @@ int main(int argc, char **argv)
 				else
 					dato_int = _atoi(dato);
 			}
+			else if (f == swap && new->next == NULL)
+				free_stack(new), fclose(fp), error5(line_number);
 			else
 				dato_int = line_number;
 			f(&new, dato_int);

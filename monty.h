@@ -57,6 +57,8 @@ void error3(int line, char *cmd);
 
 void error4(int line);
 
+void error5(int line);
+
 int _atoi(char *s);
 
 int isnumber(char *s);
