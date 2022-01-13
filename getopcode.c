@@ -23,6 +23,8 @@ void (*get_opcode(char *opc))(stack_t **, unsigned int)
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"stack", _stack},
+		{"queue", _queue},
 		{NULL, NULL}};
 	int cont = 0;
 

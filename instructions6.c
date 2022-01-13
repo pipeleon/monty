@@ -78,3 +78,31 @@ void rotr(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = new;
 	*stack = new;
 }
+
+/**
+ * _stack - change global variable to 0
+ * @stack: Stack
+ * @line_number: Line number
+ *
+ * Return: void
+ */
+void _stack(stack_t **stack, unsigned int line_number)
+{
+	(void)(stack);
+	(void)(line_number);
+	queue_id = 0;
+}
+
+/**
+ * _queue - change global variable to 1
+ * @stack: Stack
+ * @line_number: Line number
+ *
+ * Return: void
+ */
+void _queue(stack_t **stack, unsigned int line_number)
+{
+	(void)(stack);
+	(void)(line_number);
+	queue_id = 1;
+}

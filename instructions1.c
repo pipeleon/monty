@@ -10,7 +10,7 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new;
+	stack_t *current, *new;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -18,19 +18,40 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new->n = line_number;
-	if (*stack == NULL)
+	if (queue_id == 0)
 	{
-		new->next = NULL;
-		new->prev = NULL;
+		new->n = line_number;
+		if (*stack == NULL)
+		{
+			new->next = NULL;
+			new->prev = NULL;
+		}
+		else
+		{
+			new->next = *stack;
+			new->prev = NULL;
+			(*stack)->prev = new;
+		}
+		*stack = new;
 	}
 	else
 	{
-		new->next = *stack;
-		new->prev = NULL;
-		(*stack)->prev = new;
+		current = *stack;
+		new->n = line_number;
+		new->next = NULL;
+		if (*stack == NULL)
+		{
+			new->prev = NULL;
+			*stack = new;
+		}
+		else
+		{
+			while (current->next != NULL)
+				current = current->next;
+			new->prev = current;
+			current->next = new;
+		}
 	}
-	*stack = new;
 }
 
 /**
