@@ -18,14 +18,14 @@ int main(int argc, char **argv)
 	stack_t *new = NULL;
 	FILE *fp = fopen(argv[1], "r");
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
 	if (!fp)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n"), fclose(fp);
 		exit(EXIT_FAILURE);
 	}
 	read = fgets(line, 1024, fp);
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 			if (!f)
 			{
 				fprintf(stderr, "L/%d: unknown instruction %s\n", line_number, comando);
-				free_stack(new);
+				free_stack(new), fclose(fp);
 				return (EXIT_FAILURE);
 			}
 			if (f == push)
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 				if (dato == NULL || isnumber(dato) == 0)
 				{
 					fprintf(stderr, "L%d: usage: push integer\n", line_number);
-					free_stack(new);
+					free_stack(new), fclose(fp);
 					exit(EXIT_FAILURE);
 				}
 				else
