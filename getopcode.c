@@ -18,6 +18,7 @@ void (*get_opcode(char *opc))(stack_t **, unsigned int)
 		{"sub", sub},
 		{"div", _div},
 		{"mul", _mul},
+		{"mod", _mod},
 		{NULL, NULL}};
 	int cont = 0;
 
