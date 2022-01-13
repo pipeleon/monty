@@ -55,6 +55,8 @@ void sub(stack_t **stack, unsigned int line_number);
 
 void _div(stack_t **stack, unsigned int line_number);
 
+void _mul(stack_t **stack, unsigned int line_number);
+
 void free_stack(stack_t *head);
 
 void error1(char *file);
@@ -74,6 +76,8 @@ void error7(int line);
 void error8(int line);
 
 void error9(int line);
+
+void error10(int line);
 
 int _atoi(char *s);
 
