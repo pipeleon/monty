@@ -16,18 +16,13 @@ int main(int argc, char **argv)
 	int line_number = 1;
 	unsigned int dato_int;
 	stack_t *new = NULL;
-	FILE *fp = fopen(argv[1], "r");
+	FILE *fp;
 
-	if (!fp)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n"), fclose(fp);
-		exit(EXIT_FAILURE);
-	}
+		error2();
+	fp = fopen(argv[1], "r");
+	if (!fp)
+		error1(argv[1]);
 	read = fgets(line, 1024, fp);
 	while (read)
 	{
@@ -36,19 +31,11 @@ int main(int argc, char **argv)
 		{
 			f = get_opcode(comando);
 			if (!f)
-			{
-				fprintf(stderr, "L/%d: unknown instruction %s\n", line_number, comando);
-				free_stack(new), fclose(fp);
-				return (EXIT_FAILURE);
-			}
+				free_stack(new), fclose(fp), error3(line_number, comando);
 			if (f == push)
 			{
 				if (dato == NULL || isnumber(dato) == 0)
-				{
-					fprintf(stderr, "L%d: usage: push integer\n", line_number);
-					free_stack(new), fclose(fp);
-					exit(EXIT_FAILURE);
-				}
+					free_stack(new), fclose(fp), error4(line_number);
 				else
 					dato_int = _atoi(dato);
 			}
@@ -58,7 +45,6 @@ int main(int argc, char **argv)
 		}
 		read = fgets(line, 1024, fp), line_number++;
 	}
-	fclose(fp);
-	free_stack(new);
+	fclose(fp), free_stack(new);
 	return (EXIT_SUCCESS);
 }

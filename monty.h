@@ -43,6 +43,14 @@ void pall(stack_t **stack, unsigned int line_number);
 
 void free_stack(stack_t *head);
 
+void error1(char *file);
+
+void error2(void);
+
+void error3(int line, char *cmd);
+
+void error4(int line);
+
 int _atoi(char *s);
 
 int isnumber(char *s);
