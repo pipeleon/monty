@@ -47,3 +47,34 @@ int _atoi(char *s)
 	}
 	return (a);
 }
+
+/**
+ * isnumber - checks if string is integer
+ * @s: String to check
+ *
+ * Return: void
+ */
+int isnumber(char *s)
+{
+	int j;
+	int l;
+
+	if (s == NULL)
+		return (0);
+
+	l = 0;
+	while (s[l] != '\0')
+		l++;
+
+
+	for (j = 0; j <= l - 1; j++)
+	{
+		if (s[j] >= 48 && s[j] <= 57)
+		{
+			continue;
+		}
+		else
+			return (0);
+	}
+	return (1);
+}
