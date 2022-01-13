@@ -31,3 +31,23 @@ void (*get_opcode(char *opc))(stack_t **, unsigned int)
 
 	return (NULL);
 }
+
+/**
+ * check_comment - Checks if the line contains the # to reemplace for '\0'
+ * @line: Line read by getline to check
+ * Return: void
+ */
+void check_comment(char *line)
+{
+	int i = 0;
+
+	while (*(line + i))
+	{
+		if (*(line + i) == 35)
+		{
+			*(line + i) = '\0';
+			break;
+		}
+		i++;
+	}
+}

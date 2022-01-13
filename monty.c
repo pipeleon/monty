@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	fp = fopen(argv[1], "r");
 	if (!fp)
 		error1(argv[1]);
-	read = fgets(line, 1024, fp);
+	read = fgets(line, 1024, fp), check_comment(line);
 	while (read)
 	{
 		comando = strtok(line, " \t\r\n\a"), dato = strtok(NULL, " \t\r\n\a");
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 				dato_int = line_number;
 			f(&new, dato_int);
 		}
-		read = fgets(line, 1024, fp), line_number++;
+		read = fgets(line, 1024, fp), check_comment(line), line_number++;
 	}
 	fclose(fp), free_stack(new);
 	return (EXIT_SUCCESS);

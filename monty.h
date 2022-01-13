@@ -37,6 +37,8 @@ typedef struct instruction_s
 
 void (*get_opcode(char *opc))(stack_t **, unsigned int);
 
+void check_comment(char *line);
+
 void push(stack_t **stack, unsigned int line_number);
 
 void pall(stack_t **stack, unsigned int line_number);
