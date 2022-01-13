@@ -67,3 +67,29 @@ void pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * pstr - prints the string starting at the top of the stack
+ * @stack: Stack
+ * @line_number: Line number
+ *
+ * Return: void
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+	int n;
+
+	(void)(line_number);
+	tmp = *stack;
+	n = tmp->n;
+
+	while (tmp && n >= 1 && n <= 127)
+	{
+		putchar(n);
+
+		tmp = tmp->next;
+		n = tmp->n;
+	}
+	printf("\n");
+}
