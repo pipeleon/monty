@@ -82,14 +82,18 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	(void)(line_number);
 	tmp = *stack;
-	n = tmp->n;
-
-	while (tmp && n >= 1 && n <= 127)
+	if (tmp != NULL)
 	{
-		putchar(n);
-
-		tmp = tmp->next;
 		n = tmp->n;
+
+		while (tmp && n >= 1 && n <= 127)
+		{
+			putchar(n);
+
+			tmp = tmp->next;
+			if (tmp)
+				n = tmp->n;
+		}
 	}
 	printf("\n");
 }
