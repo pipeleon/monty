@@ -42,16 +42,6 @@ int main(int argc, char **argv)
 				free_stack(new), fclose(fp), error5(line_number);
 			else if (f == add && (new == NULL || new->next == NULL))
 				free_stack(new), fclose(fp), error6(line_number);
-			else if (f == sub && (new == NULL || new->next == NULL))
-				free_stack(new), fclose(fp), error7(line_number);
-			else if (f == _div && (new == NULL || new->next == NULL))
-				free_stack(new), fclose(fp), error8(line_number);
-			else if ((f == _div || f == _mod) && new->n == 0)
-				free_stack(new), fclose(fp), error9(line_number);
-			else if (f == _mul && (new == NULL || new->next == NULL))
-				free_stack(new), fclose(fp), error10(line_number);
-			else if (f == _mod && (new == NULL || new->next == NULL))
-				free_stack(new), fclose(fp), error11(line_number);
 			else
 				dato_int = line_number;
 			f(&new, dato_int);

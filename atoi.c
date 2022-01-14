@@ -58,6 +58,7 @@ int isnumber(char *s)
 {
 	int j;
 	int l;
+	int cont = 0;
 
 	if (s == NULL)
 		return (0);
@@ -65,9 +66,11 @@ int isnumber(char *s)
 	l = 0;
 	while (s[l] != '\0')
 		l++;
+	if (s[0] == '-')
+		cont++;
 
 
-	for (j = 0; j <= l - 1; j++)
+	for (j = 0 + cont; j <= l - 1; j++)
 	{
 		if (s[j] >= 48 && s[j] <= 57)
 		{
